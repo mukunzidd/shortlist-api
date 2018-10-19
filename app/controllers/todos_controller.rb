@@ -10,6 +10,11 @@ class TodosController < ApplicationController
     json_response(@todo)
   end
 
+  def create
+    @todo = Todo.create!(todo_params)
+    json_response(@todo, :created)
+  end
+
   private
   def set_todo
     @todo = Todo.find(params[:id])
